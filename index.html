@@ -49,7 +49,19 @@
     </style>
     <script>
         function save() {
-            alert("파일이 업로드 되었습니다!!");
+
+            var form_data = new FormData($('#upload-file')[0]);
+            $.ajax({
+                type: 'POST',
+                url: 'http://pythonapp-env.eba-3gxmyry2.ap-northeast-2.elasticbeanstalk.com/fileupload',
+                data: form_data,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    alert("파일이 업로드 되었습니다!!");
+                },
+            });
+
         }
     </script>
 
